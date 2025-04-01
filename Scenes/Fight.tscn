@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c45dgjecoygvk"]
+
+[ext_resource type="PackedScene" uid="uid://b05x54pvp46pu" path="res://Scenes/Stage.tscn" id="1_sjyk1"]
+[ext_resource type="PackedScene" uid="uid://ce3ep5gsfe80h" path="res://Scenes/Player/Player1.tscn" id="2_atkfv"]
+
+[node name="Fight" type="Node2D"]
+
+[node name="Stage" parent="." instance=ExtResource("1_sjyk1")]
+
+[node name="Player1" parent="." instance=ExtResource("2_atkfv")]
+position = Vector2(364, 321)
+
+[node name="Player2" parent="." instance=ExtResource("2_atkfv")]
+position = Vector2(736, 324)
+MoveLeftAction = "p2_left"
+MoveRightAction = "p2_right"
+JumpAction = "p2_jump"
