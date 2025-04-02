@@ -9,9 +9,14 @@ size = Vector2(38, 31)
 script = ExtResource("1_nleqq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 64.0
-metadata/_edit_use_anchors_ = true
+grow_horizontal = 2
+size_flags_horizontal = 0
 
 [node name="ColorRect" type="ColorRect" parent="ColorRect"]
 layout_mode = 0
@@ -22,5 +27,5 @@ color = Color(0, 0, 1, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(20, 48.5)
+position = Vector2(0, 48)
 shape = SubResource("RectangleShape2D_76k4b")

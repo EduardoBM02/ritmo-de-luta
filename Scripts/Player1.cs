@@ -15,7 +15,7 @@ public partial class Player1 : CharacterBody2D
 	[Export] private int _jumpForce = -400;
 	[Export] private int _jumpHorizontalSpeed = 200;
 
-	private bool _facingRight = true;
+	[Export] public bool _facingRight { get; set; } = true;
 	private Player1 _otherPlayer;
 
 	public override void _Ready()
@@ -29,12 +29,15 @@ public partial class Player1 : CharacterBody2D
 			}
 		}
 
+		UpdateFacingDirection();
+
 		GD.Print("Player: " + this);
 		GD.Print("other Player of " + this + ": " + _otherPlayer);
+		GD.Print(_facingRight);
 	}
 
 
-	public override void _PhysicsProcess(double delta)
+	public override void _Process(double delta)
 	{
 		base._PhysicsProcess(delta);
 
@@ -49,7 +52,7 @@ public partial class Player1 : CharacterBody2D
 		if (IsOnFloor()){
 			velocity.X = direction * _speed;
 
-			_facingRight = GlobalPosition.X < _otherPlayer.GlobalPosition.X;
+		//	_facingRight = GlobalPosition.X < _otherPlayer.GlobalPosition.X;
 
 			// função comentada abaixo
 			UpdateFacingDirection();
@@ -76,9 +79,18 @@ public partial class Player1 : CharacterBody2D
 	// EU SIMPLESMENTE NÃO CONSIGO ENTENDER POR QUE ISSO N FUNCIONA.
 	
 	private void UpdateFacingDirection(){
-		if (_otherPlayer == null) return;
-
+		_facingRight = GlobalPosition.X < _otherPlayer.GlobalPosition.X;
 		Scale = new Vector2(_facingRight ? 1 : -1, Scale.Y);
+		if (!_facingRight) {
+			if (this.Name == "Player2"){
+				GD.Print("facing left..." + Scale.X);
+			}
+		} else {
+			if (Name == "Player2"){
+				GD.Print("facing right..." + Scale.X);
+			}
+		}
+
 	}
 
 }
