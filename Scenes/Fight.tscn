@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c45dgjecoygvk"]
+[gd_scene load_steps=5 format=3 uid="uid://c45dgjecoygvk"]
 
 [ext_resource type="PackedScene" uid="uid://b05x54pvp46pu" path="res://Scenes/Stage.tscn" id="1_sjyk1"]
 [ext_resource type="PackedScene" uid="uid://ce3ep5gsfe80h" path="res://Scenes/Player/Player1.tscn" id="2_atkfv"]
+[ext_resource type="Texture2D" uid="uid://cnpu0ami18vu" path="res://Assets/Sprites/RedRight.png" id="3_3ed0a"]
+[ext_resource type="Texture2D" uid="uid://6mcb1iibuf8f" path="res://Assets/Sprites/BlueLeft.png" id="4_m5eqr"]
 
 [node name="Fight" type="Node2D"]
 
@@ -9,10 +11,14 @@
 
 [node name="Player1" parent="." instance=ExtResource("2_atkfv")]
 position = Vector2(364, 321)
+_rightColor = ExtResource("3_3ed0a")
+_leftColor = ExtResource("4_m5eqr")
 
 [node name="Player2" parent="." instance=ExtResource("2_atkfv")]
 position = Vector2(740, 325)
+_currentFacing = 1
+_rightColor = ExtResource("3_3ed0a")
+_leftColor = ExtResource("4_m5eqr")
 MoveLeftAction = "p2_left"
 MoveRightAction = "p2_right"
 JumpAction = "p2_jump"
-_facingRight = false
