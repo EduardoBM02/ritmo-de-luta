@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b05x54pvp46pu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wki88"]
+size = Vector2(38.6875, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kww8n"]
+size = Vector2(38.8125, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvjmr"]
+size = Vector2(1191, 3)
+
+[node name="Stage" type="StaticBody2D"]
+
+[node name="MuroEsquerdo" type="CollisionShape2D" parent="."]
+position = Vector2(-19.3438, 324)
+shape = SubResource("RectangleShape2D_wki88")
+
+[node name="MuroDireito" type="CollisionShape2D" parent="."]
+position = Vector2(1171.41, 324)
+shape = SubResource("RectangleShape2D_kww8n")
+
+[node name="Chao" type="CollisionShape2D" parent="."]
+position = Vector2(595.5, 649.5)
+shape = SubResource("RectangleShape2D_cvjmr")
