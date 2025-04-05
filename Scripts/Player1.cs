@@ -1,5 +1,3 @@
-// TODO: REFATORAR PARA STATE MACHINE. RESOLVER O PROBLEMA DOS JOGADORES ESTAREM OLHANDO UM PRO OUTRO.
-
 using Godot;
 using System;
 
@@ -10,9 +8,18 @@ public enum PlayerState{
 	Attack
 }
 
+public enum FacingDirection{
+	Right,
+	Left
+}
+
 public partial class Player1 : CharacterBody2D
 {
 	private PlayerState _currentState = PlayerState.Idle;
+	[Export] private FacingDirection _currentFacing;
+	[Export] private Texture2D _rightColor;
+	[Export] private Texture2D _leftColor;
+	private Sprite2D _sprite;
 	[Export] public string MoveLeftAction { get; set; } = "ui_left";
 	[Export] public string MoveRightAction { get; set; } = "ui_right";
 	[Export] public string JumpAction { get; set; } = "ui_up";
@@ -22,7 +29,7 @@ public partial class Player1 : CharacterBody2D
 	[Export] private int _jumpForce = -400;
 	[Export] private int _jumpHorizontalSpeed = 200;
 
-	[Export] public bool _facingRight { get; set; } = true;
+	//[Export] public bool _facingRight { get; set; }
 	private Player1 _otherPlayer;
 
 	public override void _Ready()
@@ -36,22 +43,17 @@ public partial class Player1 : CharacterBody2D
 			}
 		}
 
-		Vector2 currentScale = Scale;
-
-		UpdateFacingDirection();
-
 		GD.Print("Player: " + this);
 		GD.Print("other Player of " + this + ": " + _otherPlayer);
-		GD.Print(_facingRight);
-
-		CheckDirection("Player1");
-		CheckDirection("Player2");
+		//UpdateFacingDirection();
+		_sprite = new Sprite2D();
+		AddChild(_sprite);
+		UpdateFacing();
 	}
 
 
 	public override void _Process(double delta)
 	{
-		GD.Print(_currentState);
 		Vector2 velocity = Velocity;
 
 		if (!IsOnFloor()) {
@@ -74,6 +76,7 @@ public partial class Player1 : CharacterBody2D
 		}
 
 		Velocity = velocity;
+		UpdateFacing();
 		MoveAndSlide();
 	}
 
@@ -116,21 +119,18 @@ public partial class Player1 : CharacterBody2D
 	}
 
 	// EU SIMPLESMENTE NÃO CONSIGO ENTENDER POR QUE ISSO N FUNCIONA.
-	
-	private void UpdateFacingDirection(){
-		_facingRight = GlobalPosition.X < _otherPlayer.GlobalPosition.X;
-		Scale = new Vector2(_facingRight ? 1 : -1, Scale.Y);
+
+	private void UpdateFacing(){
+		if (IsOnFloor())
+		{
+			_currentFacing = GlobalPosition.X < _otherPlayer.GlobalPosition.X 
+				? FacingDirection.Right 
+				: FacingDirection.Left;
+		}
+		UpdateAppearance();
 	}
 
-	private void CheckDirection(string playerName){
-		if (!_facingRight) {
-			if (this.Name == playerName){
-				GD.Print("facing left..." + Scale.X);
-			}
-		} else {
-			if (Name == playerName){
-				GD.Print("facing right..." + Scale.X);
-			}
-		}
+	private void UpdateAppearance(){
+		_sprite.Texture = _currentFacing == FacingDirection.Right ? _rightColor : _leftColor;
 	}
 }
