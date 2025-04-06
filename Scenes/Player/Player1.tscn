@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://x5cnvrbyca3u" path="res://Assets/Sprites/Brawler Girl/idle.png" id="2_rbmh7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76k4b"]
-size = Vector2(30, 63.5)
+size = Vector2(19, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_udrmd"]
 atlas = ExtResource("2_rbmh7")
@@ -38,41 +38,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_l7xbx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 7.0
 }]
 
-[node name="Player1" type="CharacterBody2D"]
-position = Vector2(1, -64)
+[node name="Player1" type="CharacterBody2D" node_paths=PackedStringArray("_animSprite")]
 collision_layer = 2
 script = ExtResource("1_nleqq")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 64.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
-layout_mode = 0
-offset_left = 19.0
-offset_right = 40.0
-offset_bottom = 64.0
-color = Color(0, 0, 1, 1)
-metadata/_edit_use_anchors_ = true
+_animSprite = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
-position = Vector2(0, 31.75)
+position = Vector2(4, 43)
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_76k4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(3, 17)
-scale = Vector2(1.5, 1.5)
+position = Vector2(13, -1)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m3me1")
-autoplay = "default"
-frame_progress = 0.893613
+animation = &"idle"

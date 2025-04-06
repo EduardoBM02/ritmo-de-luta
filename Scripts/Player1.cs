@@ -14,12 +14,14 @@ public enum FacingDirection{
 }
 
 public partial class Player1 : CharacterBody2D
-{
+{ 
 	private PlayerState _currentState = PlayerState.Idle;
 	[Export] private FacingDirection _currentFacing;
-	[Export] private Texture2D _rightColor;
-	[Export] private Texture2D _leftColor;
-	private Sprite2D _sprite;
+	//[Export] private Texture2D _rightColor;
+	//[Export] private Texture2D _leftColor;
+	//private Sprite2D _sprite;
+	[Export] private AnimatedSprite2D _animSprite;
+	[Export] private string _idleAnim = "idle";
 	[Export] public string MoveLeftAction { get; set; } = "ui_left";
 	[Export] public string MoveRightAction { get; set; } = "ui_right";
 	[Export] public string JumpAction { get; set; } = "ui_up";
@@ -28,8 +30,6 @@ public partial class Player1 : CharacterBody2D
 	[Export] private int _gravity = 800;
 	[Export] private int _jumpForce = -400;
 	[Export] private int _jumpHorizontalSpeed = 200;
-
-	//[Export] public bool _facingRight { get; set; }
 	private Player1 _otherPlayer;
 
 	public override void _Ready()
@@ -45,9 +45,8 @@ public partial class Player1 : CharacterBody2D
 
 		GD.Print("Player: " + this);
 		GD.Print("other Player of " + this + ": " + _otherPlayer);
-		//UpdateFacingDirection();
-		_sprite = new Sprite2D();
-		AddChild(_sprite);
+		//_sprite = new Sprite2D();
+		//AddChild(_sprite);
 		UpdateFacing();
 	}
 
@@ -118,8 +117,6 @@ public partial class Player1 : CharacterBody2D
 		}
 	}
 
-	// EU SIMPLESMENTE NÃO CONSIGO ENTENDER POR QUE ISSO N FUNCIONA.
-
 	private void UpdateFacing(){
 		if (IsOnFloor())
 		{
@@ -131,6 +128,12 @@ public partial class Player1 : CharacterBody2D
 	}
 
 	private void UpdateAppearance(){
-		_sprite.Texture = _currentFacing == FacingDirection.Right ? _rightColor : _leftColor;
+		//_sprite.Texture = _currentFacing == FacingDirection.Right ? _rightColor : _leftColor;
+
+		if (_animSprite != null){
+			_animSprite.FlipH = _currentFacing == FacingDirection.Left;
+
+			_animSprite.Play(_idleAnim);
+		}
 	}
 }
