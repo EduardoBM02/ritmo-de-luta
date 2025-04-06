@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [dotnet]
 
 project/assembly_name="Ritmo De Luta"
@@ -38,7 +43,17 @@ p2_left={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="ForeGround"
+2d_render/layer_2="Player1"
+2d_render/layer_3="Player2"
+2d_physics/layer_1="ForeGround"
+2d_physics/layer_2="Player1"
+2d_physics/layer_3="Player2"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

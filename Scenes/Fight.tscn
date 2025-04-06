@@ -10,15 +10,21 @@
 [node name="Stage" parent="." instance=ExtResource("1_sjyk1")]
 
 [node name="Player1" parent="." instance=ExtResource("2_atkfv")]
-position = Vector2(364, 321)
+light_mask = 2
+position = Vector2(149, 195)
 _rightColor = ExtResource("3_3ed0a")
 _leftColor = ExtResource("4_m5eqr")
 
 [node name="Player2" parent="." instance=ExtResource("2_atkfv")]
-position = Vector2(740, 325)
+light_mask = 4
+position = Vector2(485, 192)
 _currentFacing = 1
 _rightColor = ExtResource("3_3ed0a")
 _leftColor = ExtResource("4_m5eqr")
 MoveLeftAction = "p2_left"
 MoveRightAction = "p2_right"
 JumpAction = "p2_jump"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2, 2)
