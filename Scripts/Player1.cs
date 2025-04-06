@@ -22,6 +22,8 @@ public partial class Player1 : CharacterBody2D
 	//private Sprite2D _sprite;
 	[Export] private AnimatedSprite2D _animSprite;
 	[Export] private string _idleAnim = "idle";
+	[Export] private string _walkAnim = "walk";
+	[Export] private string _jumpAnim = "jump";
 	[Export] public string MoveLeftAction { get; set; } = "ui_left";
 	[Export] public string MoveRightAction { get; set; } = "ui_right";
 	[Export] public string JumpAction { get; set; } = "ui_up";
@@ -133,7 +135,18 @@ public partial class Player1 : CharacterBody2D
 		if (_animSprite != null){
 			_animSprite.FlipH = _currentFacing == FacingDirection.Left;
 
-			_animSprite.Play(_idleAnim);
+			switch (_currentState){
+				case PlayerState.Idle:
+					_animSprite.Play(_idleAnim);
+					break;
+				case PlayerState.Walk:
+					_animSprite.Play(_walkAnim);
+					break;
+				case PlayerState.Jump:
+					_animSprite.Play(_jumpAnim);
+					break;
+			}
+			//_animSprite.Play(_idleAnim);
 		}
 	}
 }

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ce3ep5gsfe80h"]
+[gd_scene load_steps=25 format=3 uid="uid://ce3ep5gsfe80h"]
 
 [ext_resource type="Script" uid="uid://ddajbkxybjw4m" path="res://Scripts/Player1.cs" id="1_nleqq"]
 [ext_resource type="Texture2D" uid="uid://x5cnvrbyca3u" path="res://Assets/Sprites/Brawler Girl/idle.png" id="2_rbmh7"]
+[ext_resource type="Texture2D" uid="uid://banmrn86fgflk" path="res://Assets/Sprites/Brawler Girl/jump.png" id="3_jft2j"]
+[ext_resource type="Texture2D" uid="uid://c33p6f3ajtxv1" path="res://Assets/Sprites/Brawler Girl/walk.png" id="3_udrmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76k4b"]
 size = Vector2(19, 19)
@@ -22,6 +24,62 @@ region = Rect2(192, 0, 96, 63)
 atlas = ExtResource("2_rbmh7")
 region = Rect2(288, 0, 96, 63)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vh8c"]
+atlas = ExtResource("3_jft2j")
+region = Rect2(0, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uk6f"]
+atlas = ExtResource("3_jft2j")
+region = Rect2(96, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yv7p"]
+atlas = ExtResource("3_jft2j")
+region = Rect2(192, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a3kd"]
+atlas = ExtResource("3_jft2j")
+region = Rect2(288, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3me1"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(0, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btc75"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(96, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46djv"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(192, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gce5"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(288, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_higb4"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(384, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6spdy"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(480, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whak4"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(576, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6xgn"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(672, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omtxf"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(768, 0, 96, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obvrx"]
+atlas = ExtResource("3_udrmd")
+region = Rect2(864, 0, 96, 63)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3me1"]
 animations = [{
 "frames": [{
@@ -40,6 +98,58 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vh8c")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_1uk6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yv7p")
+}, {
+"duration": 60.0,
+"texture": SubResource("AtlasTexture_0a3kd")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3me1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btc75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46djv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gce5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_higb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6spdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whak4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6xgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omtxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obvrx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [node name="Player1" type="CharacterBody2D" node_paths=PackedStringArray("_animSprite")]
@@ -57,4 +167,6 @@ shape = SubResource("RectangleShape2D_76k4b")
 position = Vector2(13, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m3me1")
-animation = &"idle"
+animation = &"jump"
+frame = 3
+frame_progress = 0.312113
