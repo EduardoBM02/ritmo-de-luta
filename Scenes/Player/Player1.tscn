@@ -164,7 +164,7 @@ scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_76k4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(13, -1)
+position = Vector2(20, -1)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m3me1")
 animation = &"jump"

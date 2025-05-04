@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c45dgjecoygvk"]
+[gd_scene load_steps=4 format=3 uid="uid://c45dgjecoygvk"]
 
 [ext_resource type="PackedScene" uid="uid://b05x54pvp46pu" path="res://Scenes/Stage.tscn" id="1_sjyk1"]
 [ext_resource type="PackedScene" uid="uid://ce3ep5gsfe80h" path="res://Scenes/Player/Player1.tscn" id="2_atkfv"]
+[ext_resource type="PackedScene" uid="uid://3qgr6f01aege" path="res://Scenes/Player/Fighter.tscn" id="3_atkfv"]
 
 [node name="Fight" type="Node2D"]
 
@@ -26,3 +27,6 @@ JumpAction = "p2_jump"
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 zoom = Vector2(2, 2)
+
+[node name="Fighter" parent="." instance=ExtResource("3_atkfv")]
+position = Vector2(335, 209)
